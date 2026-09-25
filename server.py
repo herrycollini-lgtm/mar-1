@@ -87,6 +87,10 @@ def initialize_db():
 def valid_date(value):
     if not isinstance(value, str) or not DATE_PATTERN.fullmatch(value):
         return False
+    try:
+        return datetime.strptime(value, "%Y-%m-%d").strftime("%Y-%m-%d") == value
+    except ValueError:
+        return False
 
 
 def local_now():
