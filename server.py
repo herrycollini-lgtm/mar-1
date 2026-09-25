@@ -17,8 +17,8 @@ from zoneinfo import ZoneInfo
 SITE_DIR = Path(__file__).resolve().parent
 DB_PATH = Path(os.environ.get("MARE_DB_PATH", str(SITE_DIR / "data" / "mare.sqlite3")))
 DB_PATH.parent.mkdir(parents=True, exist_ok=True)
-HOST = os.environ.get("MARE_HOST", "127.0.0.1")
-PORT = int(os.environ.get("MARE_PORT", "8000"))
+HOST = os.environ.get("MARE_HOST", "0.0.0.0")
+PORT = int(os.environ.get("PORT", os.environ.get("MARE_PORT", "8000")))
 ADMIN_USER = os.environ.get("MARE_ADMIN_USER", "admin")
 ADMIN_PASSWORD = os.environ.get("MARE_ADMIN_PASSWORD", "")
 HTTPS_COOKIE = os.environ.get("MARE_COOKIE_SECURE", "0") == "1"
